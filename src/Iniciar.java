@@ -2,7 +2,7 @@ import java.util.ArrayList; // Importamos ArrayList para crear listas dinámicas
 import java.util.Date;      // Importamos Date para obtener la fecha actual del sistema
 import java.util.Scanner;   // Importamos Scanner para leer la entrada de texto por consola
 
-public class Compilar {
+public class Iniciar {
     // Se declaran 'static' para poder acceder a ellas desde el método main sin instanciar
     private static ArrayList<Libro> listaLibros = new ArrayList<>();
     private static ArrayList<Cliente> listaClientes = new ArrayList<>();
