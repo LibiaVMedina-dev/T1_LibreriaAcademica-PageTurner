@@ -20,7 +20,7 @@ public class Iniciar {
     public static void main(String[] args) {
         int opcion = 0; // Variable para almacenar la opción seleccionada por el usuario
         
-        // Bucle do-while: Mantiene activo el menú hasta que el usuario elija la opción 7 (Salir)
+        // Bucle do-while: Mantiene activo el menú hasta que el usuario elija la opción 10 (Salir)
         do {
             System.out.println("\n========== SISTEMA PAGE TURNER ==========");
             System.out.println("1. Registrar Libro");
@@ -101,7 +101,7 @@ public class Iniciar {
         System.out.print("Cantidad a comprar: ");
         int cantidad = Integer.parseInt(scanner.nextLine());
 
-        // Regla de Negocio: Validamos si la cantidad solicitada no supera el stock disponible
+        // Validamos si la cantidad solicitada no supera el stock disponible
         if (libro.getStock() >= cantidad) {
             // Se crea la venta pasando como parámetros las entidades asociadas
             Venta venta = new Venta(contadorVentas++, new Date(), cantidad, cliente, libro);
@@ -210,7 +210,7 @@ public class Iniciar {
         return null;
     }
 
-    // MÉTODO: REPORTE DE VENTAS Y RECAUDACIÓN POR LIBRO (REQUISITO 6)
+    // MÉTODO: REPORTE DE VENTAS Y RECAUDACIÓN POR LIBRO
     private static void generarReporteTotal() {
         System.out.println("\n========== REPORTE DE VENTAS POR LIBRO ==========");
         if (listaLibros.isEmpty()) {
