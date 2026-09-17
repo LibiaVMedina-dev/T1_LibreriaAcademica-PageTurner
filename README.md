@@ -30,32 +30,22 @@ Históricamente, la gestión se llevaba a cabo de forma manual mediante cuaderno
 * Extravío recurrente de los datos de contacto de estudiantes en lista de espera.
 * Imposibilidad de medir el rendimiento financiero semanal o identificar los libros de mayor demanda.
 
-### Solución Implementada
-El sistema desarrollado en **Java** automatiza la operación de la librería en consola bajo el paradigma de la **Programación Orientada a Objetos (POO)**. Facilita la administración del catálogo de libros, el registro de clientes, el procesamiento de ventas con descuento en tiempo real, el control estricto de reservas para títulos agotados y la emisión de reportes financieros consolidados.
+### Solución Propuesta
+Se propone la implementacion de un sistema desarrollado en **Java** que automatiza la operación de la librería en consola bajo el paradigma de la **Programación Orientada a Objetos (POO)**. Facilita la administración del catálogo de libros, el registro de clientes, el procesamiento de ventas con descuento en tiempo real, el control estricto de reservas para títulos agotados y la emisión de reportes financieros consolidados.
 
 ---
+## Clases del modelo propuesto
 
-## 🏛️ Fundamentos de Programación Orientada a Objetos (POO)
+- `Libro`: representa los datos bibliográficos, el precio y el stock.
+- `Cliente`: representa los datos de contacto del cliente o estudiante.
+- `Venta`: relaciona un cliente con un libro y registra la cantidad, la fecha y el total.
+- `Reserva`: relaciona un cliente con un libro reservado y registra la fecha.
 
-El proyecto refleja la aplicación directa de los pilares fundamentales de la POO:
+Las clases aplican encapsulamiento mediante atributos privados, constructores y métodos de acceso. `Venta` y `Reserva` mantienen asociaciones con `Cliente` y `Libro`.
 
-1. **Encapsulamiento y Ocultamiento de Información:**
-   * Todos los atributos de las entidades del dominio (`Libro`, `Cliente`, `Venta`, `Reserva`) han sido declarados con modificador de acceso `private`.
-   * El acceso a los datos y su mutación se realiza de manera controlada a través de métodos de acceso (*getters*) y de negocio (ej. `actualizarStock(int cant)`).
-2. **Abstracción y Cohesión:**
-   * Cada clase modela una entidad concreta del negocio con una responsabilidad única y delimitada:
-     * `Libro`: Gestiona la información bibliográfica y el control de inventario disponible.
-     * `Cliente`: Almacena la información de contacto e identificación del comprador/solicitante.
-     * `Venta`: Registra el hecho comercial, asociando cliente, libro, fecha y cálculo dinámico del total.
-     * `Reserva`: Gestiona las solicitudes en cola para libros con stock en cero.
-3. **Sobrecarga de Constructores (Overloading):**
-   * En la clase `Cliente` se implementan constructores sobrecargados: uno con datos completos (incluyendo correo) y otro simplificado para reservas rápidas en lista de espera.
-4. **Relaciones Estructurales:**
-   * **Asociación y Navegabilidad:** Las clases `Venta` y `Reserva` contienen referencias directas hacia objetos `Cliente` y `Libro`, permitiendo una comunicación fluida entre entidades sin acoplamiento rígido.
 
----
 
-## 📊 Diagrama de Clases UML y Modelo de Datos
+## Diagrama de clases UML
 
 ```mermaid
 classDiagram
@@ -99,7 +89,8 @@ classDiagram
         +getIdReserva() int
     }
 
-    Libro "1" <-- "0..*" Venta : referencia a
-    Cliente "1" <-- "0..*" Venta : realizada por
-    Libro "1" <-- "0..*" Reserva : reservado en
-    Cliente "1" <-- "0..*" Reserva : solicitado por
+    Libro "1" <-- "0" Venta : referencia a
+    Cliente "1" <-- "0" Venta : realizada por
+    Libro "1" <-- "0" Reserva : reservado en
+    Cliente "1" <-- "0" Reserva : solicitado por
+```
